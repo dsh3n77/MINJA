@@ -1,0 +1,14 @@
+label,mock,retriever,ssr_end,bir_end,asr_end,blr_end,blr_exposed_end,n_llm_calls
+tag__generic,True,tfidf,0.000,0.000,,,,0
+tag__keyword,True,tfidf,1.000,0.200,,,,0
+tag__none,True,tfidf,0.000,0.000,,,,0
+tag__ours,True,tfidf,0.250,0.053,,,,0
+gate__V1_imperative,True,tfidf,1.000,0.267,1.000,0.022,0.083,61
+gate__V1_note,True,tfidf,1.000,0.267,0.867,0.022,0.083,61
+gate__V1_plain,True,tfidf,1.000,0.267,0.800,0.022,0.083,61
+gate__V1_system,True,tfidf,1.000,0.267,0.867,0.022,0.083,61
+gate__V2_imperative,True,tfidf,1.000,0.267,1.000,0.022,0.083,61
+gate__V2_note,True,tfidf,1.000,0.267,0.867,0.022,0.083,61
+gate__V2_plain,True,tfidf,1.000,0.267,0.800,0.022,0.083,61
+gate__V2_system,True,tfidf,1.000,0.267,0.867,0.022,0.083,61
+gate__ungated,True,tfidf,1.000,0.267,0.800,0.111,0.383,61
