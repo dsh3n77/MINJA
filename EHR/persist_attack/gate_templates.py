@@ -15,10 +15,11 @@ Structure (matches MINJA's PSS = Progressive Shortening Strategy):
 
   V1 : the gate (if + else) is compact in g1  -> g1 survives longest, so the
        full conditional is present in every round that carries any indication.
-  V2 : the gate is split, if in g1 and else in g2.  Removing the tail one by one
-       would, at keep=1, leave the "if" without its "else"; PSS for V2 therefore
-       SKIPS that state (keep counts 4 -> 3 -> 2 -> 0) so the two branches always
-       appear together.
+  V2 : the gate is split, if in g1 and else in g2.  PSS is uniform (same as V1):
+       every round removes the tail segment, keep counts 4 -> 3 -> 2 -> 1 -> 0.
+       At keep=1 only the "if" branch remains, which is just how PSS degrades the
+       indication (MINJA's own indication loses its tail the same way); the full
+       crafted gate still lives in the stored `knowledge` payload.
 
 The gate is what makes the payload CONDITIONAL: it fires the redirect only on the
 victim entity and tells the agent to answer normally for everything else, which
@@ -118,11 +119,9 @@ def segments(style, variant, dataset="mimic_iii"):
 
 def pss_keep_counts(variant):
     """How many leading segments to keep, per PSS round (first round = full).
-    0 means 'ATTACK_QUERY only'.  V2 skips keep=1 so the else is never orphaned."""
-    if variant == "V1":
+    0 means 'ATTACK_QUERY only'.  Uniform for V1 and V2: drop the tail each round."""
+    if variant in ("V1", "V2"):
         return [4, 3, 2, 1, 0]
-    elif variant == "V2":
-        return [4, 3, 2, 0]
     raise ValueError(variant)
 
 
